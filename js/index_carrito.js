@@ -1,5 +1,5 @@
 function renderProductosCarrito() {
-    const productos = cargarProductosCarrito(); //? productos
+    const productos = cargarProductosCarrito(); // productos
     let salida = "";
 
     if (totalProductosCarrito() > 0) {
@@ -22,6 +22,7 @@ function renderProductosCarrito() {
         <td colspan="3">Total a Pagar</td>
         <td>$${totalPagarCarrito()}</td>
         <td>&nbsp;</td>
+        <td colspan="5" class="text-end"><button class="btn btn-secondary" onclick="realizarCompra()">Comprar</button></td>
         </tr>`;
         salida += `</table>`;
     } else {
@@ -31,12 +32,22 @@ function renderProductosCarrito() {
     document.getElementById("productos").innerHTML = salida;
 }
 
-function quitarProductos () {
+function quitarProductos() {
     Swal.fire({
         icon: 'error',
         title: 'Carrito vacio',
         text: 'Usted quitó todos los productos del carrito',
         footer: '<a href="/index.html">Desea volver a comprar?</a>'
+    })
+}
+
+function realizarCompra() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Tu compra fue exitosa',
+        showConfirmButton: false,
+        timer: 1500
     })
 }
 
